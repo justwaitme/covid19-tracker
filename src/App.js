@@ -1,6 +1,8 @@
-import { FormControl, MenuItem, Select } from '@material-ui/core';
+import { Card, CardContent, FormControl, MenuItem, Select } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import './App.css';
+import InfoBox from './InfoBox';
+import Map from './Map';
 
 function App() {
  const [countries, setCountries] = useState([]); 
@@ -29,9 +31,10 @@ function App() {
   }
   return (
     <div className="app">
-      {/* Header */}
-      {/* Title + input dropdown field*/}
+      <div className='app__left'>
       <div className='app__header'>
+        {/* Header */}
+        {/* Title + input dropdown field*/}
           <h1>React Covid-19 Tracker V1 </h1>
           <FormControl className="app__dropdown">
             <Select variant='outlined' value={country} onChange={onCountryChange}>
@@ -44,16 +47,33 @@ function App() {
           </FormControl>
       </div>
       
+      <div className='app__stats'>
+          {/* InfoBox title=coronaviruscases       */}
+          <InfoBox title="corona virus cases" cases={5000} total={100000} />
+          {/* InfoBox title=coronavirusrecoveries  */}
+          <InfoBox title="corona virus recovered" cases={1500} total={20000} />
+          {/* InfoBox title=coronavirusdeaths     */}
+          <InfoBox title="corona virus deaths" cases={1000} total={9000} />
+      </div>
+
+        {/* Map */}
+         <Map />   
+      </div>
+
+
+      <div className='app__right'>
+                <Card>
+                  <CardContent>
+                  <h3>Live Cases By Country</h3>
+                  {/* Table */}
+                  <h3>Worldwide new cases</h3>
+                  {/* Graph*/}
+                  </CardContent>
+                </Card>    
+      </div>
       
 
-      {/* InfoBox*/}
-      {/* InfoBox*/}
-      {/* InfoBox*/}
-
-      {/* Map */}
-
-      {/* Table */}
-      {/* Graph*/}
+      
     </div>
   );
 }
